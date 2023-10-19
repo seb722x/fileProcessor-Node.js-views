@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+    
+    <link href="/public/css/index.css" rel="stylesheet" />
+    <title>{{#if viewData.title}}{{ viewData.title }}{{else}}File processor{{/if}}</title>
+  </head>
+  <body>
+    <!-- header -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">File processor</a>
+            
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link active" href="/">Home</a>
+                </div>
+        </div>
+    </nav>
+
+    <header class="masthead bg-primary text-white text-center py-5">
+        <div class="container d-flex align-items-center flex-column">
+            <h2>Node.js file processor</h2>
+        </div>
+    </header>
+    <!-- header -->
+
+    <form action="/upload" method="post" enctype="multipart/form-data" class="my-3 mx-auto text-center">
+
+        <div class="mb-3 row">
+            <label class="col-lg-4  col-form-label">Archivo de texto (.txt)</label>
+            <div class="col-lg-10 col-md-6 col-sm-12">
+                <input class="form-control" type="file" name="file">
+            </div>
+             <div class="col-lg-1 col-md-2 col-sm-12">
+                <button type="submit" class="btn btn-primary " style="white-space: nowrap;">Subir Archivo</button>
+            </div>
+        </div>   
+    </form>
+
+    <form action="/process" method="post" class="my-1 mx-auto text-center">
+    
+        <input type="hidden" name="filePath" value="{{filePath}}">
+        <button type="submit" class="btn btn-success">Procesar Archivo</button>
+    </form>
+
+
+     <h5 class="text-center">{{title}}</h5>
+     <h5 class="text-center">{{result}}</h5>
+     <h5 class="text-center">{{result2}}</h5>
+        {{#if filePaths}}
+            <h1 class="text-center">Archivos subidos correctamente</h1>
+            <ul>
+                {{#each filePaths}}
+                    <li>{{this}}</li>
+                {{/each}}
+            </ul>
+        {{/if}}
+
+     {{#if result3}}
+      <div class="text-center">
+        <h5>Palabras contenidas en el archivo:</h5>
+        <div class="word-box">
+          {{#each result3}}
+            {{this}}
+            {{#unless @last}}, {{/unless}} 
+          {{/each}}
+        </div>
+       </div>
+        {{/if}}
+
+        
+       {{#if result5}}
+      
+        <div class="table-container">
+             <h5>Palabras por frecuencia:</h5>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Palabra</th>
+                <th scope="col">Frecuencia</th>
+              </tr>
+            </thead>
+            <tbody>
+             
+              {{#each result5}}
+                <tr>
+                  <td>{{@key}}</td>
+                  <td>{{this}}</td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+        {{/if}}
+
+    <!-- footer -->
+    <div class="copyright py-4 text-center text-white  footer">
+        <div class="container">
+            <small>
+                Node.js online file processor - Juan Sebastián
+            </small>
+        </div>
+    </div>
+    <!-- footer -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  </body>
+</html>
