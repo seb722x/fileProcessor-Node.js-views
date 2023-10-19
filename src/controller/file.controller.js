@@ -57,20 +57,24 @@ const processFile = async (req, res) => {
         const { wordCount, charCount, analysis, wordFrequency } = wordsProcessors(data);
     
         res.render('index', {
-            result: `El número de palabras que contiene este archivo es: ${wordCount}`,
-            result2: `El número de letras que contiene este archivo es: ${charCount}`,
-            result3: analysis.tokens,
-            result5: wordFrequency,
+            wordCountW: `El número de palabras que contiene este archivo es: ${wordCount}`,
+            charCountW: `El número de letras que contiene este archivo es: ${charCount}`,
+            WordsTokens: analysis.tokens,
+            FreqTab: wordFrequency,
         });
     });
 }
 
 
 
-
-
-
-
+const countWords = (data) => {
+    try {
+        return data.split(/\s+/).filter(word => word.length > 0).length;
+    } catch (error) {
+        console.error('Error counting words:', error);
+        return {}; 
+    }
+};
 
 
 const calculateCharCount = (data) => {

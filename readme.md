@@ -69,59 +69,7 @@ Table of Contents
     POST /process: Processes the uploaded file.
 
 
-Tabla de Contenidos
-1. Requisitos
-2. Instalación
-3. Uso
-4. Estructura de la Aplicación
-5. API
-6. Autor
 
-
-1. Requisitos
-    1.1 You should have installed Node.js in last LTS version.
-    1.2 Use a code editor, could be VS code.
-    1.3 As we are using noRelational DB, you do not have to install any db administrator, as it is connected 
-        by the URI.
-
-2. Install
-
-    2.1 Clone repository from gitHub
-        git clone https://github.com/seb722x/fileProcessor-Node.js-views
-    2.2 Change your location to the main folder of the repo
-    2.3 Install dependencies from NPM 
-        npm install
-    2.4 Make your own customize environment variables, for quick test porpoise, there is the main .env file     attached to this repository
-
-3. Usage
-
-    3.1 run:  npm start dev
-    3.2 Direct to  http://localhost:3001
-    3.3 There you will be loading the main view of the page.
-    3.4 You can click on "buscar archivo", to look for a file and list to upload.
-    3.5 Then make click on "subir archivo" to upload the file to the folder uploads.
-    3.6 The click on "process file" button to make the file be process for the fs library and others
-        libraries to make responses about the file.
-
-
-4. Api structure
-
-- /src
-  - /routes
-    - file.route.js
-  - /controllers
-    - file.controller.js
-  - /views
-    - index.hbs
-- index.js
-- package.json
-- README.md
-
-
-5. API-EndPoints
-
-POST /upload: Sube un archivo.
-POST /process: Procesa el archivo subido.
 
 Tabla de Contenidos
 Requisitos
