@@ -45,25 +45,25 @@
         <input type="hidden" name="filePath" value="{{filePath}}">
         <button type="submit" class="btn btn-success">Procesar Archivo</button>
     </form>
-
+    {{#if filePaths}}
+          <h1 class="text-center">Archivos subidos correctamente</h1>
+          <ul>
+              {{#each filePaths}}
+                  <li>{{this}}</li>
+              {{/each}}
+          </ul>
+    {{/if}}
 
      <h5 class="text-center">{{title}}</h5>
-     <h5 class="text-center">{{result}}</h5>
-     <h5 class="text-center">{{result2}}</h5>
-        {{#if filePaths}}
-            <h1 class="text-center">Archivos subidos correctamente</h1>
-            <ul>
-                {{#each filePaths}}
-                    <li>{{this}}</li>
-                {{/each}}
-            </ul>
-        {{/if}}
+     <h5 class="text-center">{{wordCountW}}</h5>
+     <h5 class="text-center">{{charCountW}}</h5>
+        
 
-     {{#if result3}}
+     {{#if WordsTokens}}
       <div class="text-center">
         <h5>Palabras contenidas en el archivo:</h5>
         <div class="word-box">
-          {{#each result3}}
+          {{#each WordsTokens}}
             {{this}}
             {{#unless @last}}, {{/unless}} 
           {{/each}}
@@ -72,7 +72,7 @@
         {{/if}}
 
         
-       {{#if result5}}
+       {{#if FreqTab}}
       
         <div class="table-container">
              <h5>Palabras por frecuencia:</h5>
@@ -85,7 +85,7 @@
             </thead>
             <tbody>
              
-              {{#each result5}}
+              {{#each FreqTab}}
                 <tr>
                   <td>{{@key}}</td>
                   <td>{{this}}</td>
