@@ -32,7 +32,7 @@ Table of Contents
 
 3. Usage
     3.1 Run the Application
-        Start the application by running: npm start dev
+        Start the application by running: npm run dev
     3.2 Access the Application
         Open your web browser and go to http://localhost:3001.
 
@@ -46,7 +46,7 @@ Table of Contents
         Click on the "Subir archivo" button to upload the selected file to the "uploads" folder.
 
     3.6 File Processing
-        Click on the "Process file" button to trigger the file processing, which involves using the fs library and other libraries to generate responses related to the uploaded file.
+        Click on the "procesar" button to trigger the file processing, which involves using the fs library and other libraries to generate responses related to the uploaded file.
 
 4. Application Structure
     The application's file structure is organized as follows:
@@ -71,26 +71,7 @@ Table of Contents
 
 
 
-Tabla de Contenidos
-Requisitos
-Instalación
-Uso
-Estructura de la Aplicación
-API
-Autor
-1. Requisitos
-1.1 Node.js
-Asegúrate de tener Node.js instalado en la última versión LTS.
 
-1.2 Editor de Código
-Puedes elegir cualquier editor de código; se recomienda Visual Studio Code (VS Code).
-
-1.3 Base de Datos NoSQL
-Dado que esta aplicación utiliza una base de datos NoSQL, no necesitas instalar ningún administrador de bases de datos por separado. Está conectado a través de una URI.
-
-2. Instalación
-2.1 Clonar el Repositorio
-Clona el repositorio desde GitHub: git clone https://github.com/seb722x/fileProcessor-Node.js-views
 
 
 Aplicación de Procesamiento de Archivos en Node.js
@@ -129,7 +110,7 @@ Autor
 3. Uso
     3.1 Ejecutar la Aplicación
         Inicia la aplicación ejecutando:
-            npm start dev
+            npm run dev
 
     3.2 Acceder a la Aplicación
         Abre tu navegador web y ve a http://localhost:3001.
