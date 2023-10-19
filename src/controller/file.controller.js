@@ -17,3 +17,23 @@ const storage = multer.diskStorage({
   });
   
   const upload = multer({ storage: storage });
+
+
+  const uploadFile = async(req,res)=>{
+    try {
+        const uploadedFile = req.file;
+  
+        if (!uploadedFile) {
+            return res.render('index', {    
+                title: 'Error, debe de seleccionar un archivo' 
+            });
+        }
+
+        return res.render('index', { 
+            title: 'Archivo subido correctamente', filePath: uploadedFile.path 
+        });
+    } catch (error) {
+        console.log(error)
+        return res.render('index', { title: 'Ha ocurrido un error'})
+    }
+};
