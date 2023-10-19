@@ -37,3 +37,48 @@ const storage = multer.diskStorage({
         return res.render('index', { title: 'Ha ocurrido un error'})
     }
 };
+
+
+
+
+
+
+
+
+
+
+const calculateCharCount = (data) => {
+    try {
+        return data.length;
+    } catch (error) {
+        console.error('Error calculating character count:', error);
+        return {};
+    }
+};
+
+const analyzeWordFrequency = (data) => {
+    try {
+        const words = data.split(/\s+/).filter(word => word.length > 0);
+        const wordFrequency = {};
+
+        words.forEach(word => {
+            wordFrequency[word] = (wordFrequency[word] || 0) + 1;
+        });
+
+        return wordFrequency;
+    } catch (error) {
+        console.error('Error analyzing word frequency:', error);
+        return {};
+    }
+};
+
+const analyzeSentiment = (data) => {
+    try {
+        const Sentiment = require('sentiment');
+        const sentiment = new Sentiment();
+        return sentiment.analyze(data);
+    } catch (error) {
+        console.error('Error analyzing sentiment:', error);
+        return {};
+    }
+};
