@@ -39,6 +39,32 @@ const storage = multer.diskStorage({
 };
 
 
+const processFile = async (req, res) => {
+    const filePath = req.body.filePath;
+  
+    if (!filePath) {
+      return res.render('index', { 
+        title: 'directorio del archivo no encontrado' 
+        });
+    }
+    
+  
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            return console.error(err);
+        }
+    
+        const { wordCount, charCount, analysis, wordFrequency } = wordsProcessors(data);
+    
+        res.render('index', {
+            result: `El número de palabras que contiene este archivo es: ${wordCount}`,
+            result2: `El número de letras que contiene este archivo es: ${charCount}`,
+            result3: analysis.tokens,
+            result5: wordFrequency,
+        });
+    });
+}
+
 
 
 
@@ -80,5 +106,19 @@ const analyzeSentiment = (data) => {
     } catch (error) {
         console.error('Error analyzing sentiment:', error);
         return {};
+    }
+};
+
+const wordsProcessors = (data) => {
+    try {
+        const wordCount = countWords(data);
+        const charCount = calculateCharCount(data);
+        const wordFrequency = analyzeWordFrequency(data);
+        const analysis = analyzeSentiment(data);
+
+        return { analysis, wordFrequency, charCount, wordCount };
+    } catch (error) {
+        console.error('Error processing words:', error);
+        return { error: 'Error processing words' };
     }
 };
