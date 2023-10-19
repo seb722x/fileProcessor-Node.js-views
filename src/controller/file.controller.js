@@ -122,3 +122,10 @@ const wordsProcessors = (data) => {
         return { error: 'Error processing words' };
     }
 };
+
+
+module.exports ={
+    upload,
+    uploadFile,
+    processFile
+} 
